@@ -6,6 +6,7 @@ const path = require("path");
 const fs = require("fs");
 
 const OUTPUT_DIR = path.resolve(__dirname, "output");
+// Check if output directory does exist and make it if doesn't
 if (!fs.existsSync(OUTPUT_DIR)){
     fs.mkdirSync("output");
 }
