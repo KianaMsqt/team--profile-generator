@@ -6,9 +6,15 @@ const path = require("path");
 const fs = require("fs");
 
 const OUTPUT_DIR = path.resolve(__dirname, "output");
+if (!fs.existsSync(OUTPUT_DIR)){
+    fs.mkdirSync("output");
+}
 const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./src/page-template.js");
+const { stringify } = require("querystring");
+
+const team = []; // array of Employee objects (array of Manager, or Engineers, or Interns)
 
 // Gather information about the development team members, and render the HTML file.
 function createEngineer(team) {
@@ -35,7 +41,12 @@ function createEngineer(team) {
         }
     ]).then((engineerDetails) => {
         // Initialise Engineer class to create Manager object
-        const engineer = new Engineer(engineerDetails.name, engineerDetails.id, engineerDetails.email, engineerDetails.githubUsername)
+        const engineer = new Engineer(
+            engineerDetails.name, 
+            engineerDetails.id, 
+            engineerDetails.email, 
+            engineerDetails.githubUsername
+            );
         team.push(engineer);
         createTeam(team); // at this point we add an engineer to the team array
     });
@@ -65,7 +76,12 @@ function createIntern(team) {
         }
     ]).then((internDetails) => {
         // Initialise Intern class to create Manager object
-        const intern = new Intern(internDetails.name, internDetails.id, internDetails.email, internDetails.school)
+        const intern = new Intern(
+            internDetails.name, 
+            internDetails.id, 
+            internDetails.email, 
+            internDetails.school
+            );
         team.push(intern);
         createTeam(team); // at this point we add an intern to the team array
     });
@@ -95,6 +111,8 @@ function createTeam(team) {
             fs.writeFile(outputPath, html, (err) => {
                 if (err) {
                     console.log('Failed to write HTML file');
+                } else {
+                    console.log('Your team is generated successfully!');
                 }
             });
         }
@@ -125,14 +143,18 @@ function createManager(team) {
         }
     ]).then((managerDetails) => {
         // Initialise Manager class to create Manager object
-        const manager = new Manager(managerDetails.name, managerDetails.id, managerDetails.email, managerDetails.officeNumber)
+        const manager = new Manager(
+            managerDetails.name, 
+            managerDetails.id, 
+            managerDetails.email, 
+            managerDetails.officeNumber
+            );
         team.push(manager);
         createTeam(team); // at this point, team array have a manager in it
     });
 }
 
 function start() {
-    const team = []; // array of Employee objects (array of Manager, or Engineers, or Interns)
     // Employee can be Manager, Engineer, or Intern
     createManager(team);
 }
