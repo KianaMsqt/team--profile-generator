@@ -13,14 +13,25 @@ const render = require("./src/page-template.js");
 // Gather information about the development team members, and render the HTML file.
 function createEngineer(team) {
     inquirer.prompt([
-        // Engineer name
-        // Engineer id
-        // Engineer email
-        // Engineer GitHub username
         {
             type: 'input',
             name: 'name',
             message: "What is the engineer's name?",
+        },
+        {
+            type: 'input',
+            name: 'id',
+            message: "Enter the engineer's ID:",
+        },
+        {
+            type: 'input',
+            name: 'email',
+            message: "Enter the engineer's email address:",
+        },
+        {
+            type: 'input',
+            name: 'githubUsername',
+            message: "Enter the engineer's GitHub username:",
         }
     ]).then((engineerDetails) => {
         // Initialise Engineer class to create Manager object
@@ -32,14 +43,25 @@ function createEngineer(team) {
 
 function createIntern(team) {
     inquirer.prompt([
-        // Intern name
-        // Intern id
-        // Intern email
-        // Intern school
         {
             type: 'input',
             name: 'name',
             message: "What is the intern's name?",
+        },
+        {
+            type: 'input',
+            name: 'id',
+            message: "Enter the intern's ID:",
+        },
+        {
+            type: 'input',
+            name: 'email',
+            message: "Enter intern's email address:",
+        },
+        {
+            type: 'input',
+            name: 'school',
+            message: "Enter intern's school:",
         }
     ]).then((internDetails) => {
         // Initialise Intern class to create Manager object
@@ -81,14 +103,25 @@ function createTeam(team) {
 
 function createManager(team) {
     inquirer.prompt([
-        // Manager name
-        // Manager id
-        // Manager email
-        // Manager office number (phone number)
         {
             type: 'input',
             name: 'name',
             message: "What is the team manager's name?",
+        },
+        {
+            type: 'input',
+            name: 'id',
+            message: "Enter manager's ID?",
+        },
+        {
+            type: "input",
+            name: "email",
+            message: "Enter Manager's email address:",
+        },
+        {
+            type: "input",
+            name: "officeNumber",
+            message: "Enter Manager's office number:",
         }
     ]).then((managerDetails) => {
         // Initialise Manager class to create Manager object
