@@ -31,9 +31,16 @@ node index.js
 
 The following image shows a mock-up of the generated HTML’s appearance and functionality:
 
-![HTML webpage titled “My Team” features five boxes listing employee names, titles, and other key info.](./assets/14-object-oriented-programming-challenge-demo.png)
+### Data entry in command line: 
+![Data Entry](./assets/data-entry.png)
 
-The styling in the image is just an example, so feel free to add your own.
+
+### Output: 
+![Output](./assets/output.png)
+
+
+### And if tests will be passed successfully: 
+![Test](./assets/test.png)
 
 
 ---
